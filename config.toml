@@ -1,0 +1,15 @@
+baseURL = "https://blog.desgrange.info"
+languageCode = "en-us"
+title = "Remi Desgrange "
+theme="hyde"
+
+
+[[menu.main]]
+    name = "About"
+    pre = "<i class='fa fa-heart'></i>"
+    weight = -110
+    identifier = "about"
+    url = "/about/"
+
+[params]
+    description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
