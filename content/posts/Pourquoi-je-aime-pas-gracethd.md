@@ -24,11 +24,11 @@ Herbergé sur Github, une belle doc. Un redmine (ça c'est moins cool mais bon..
 # Et puis tu regarde le "MCD"
 
 Bon alors déjà un mcd c'est ça :
-![MCD le vrais](images/MCD-levrais.jpg)
+![MCD le vrais](/images/MCD_levrais.jpg)
 
 Je n'ai jamais trouvé un MCD chez GraceTHD. J'ai trouvé ça :
 
-![MCD sauce gracethd](https://github.com/GraceTHD-community/GraceTHD-MCD/blob/master/docs/GraceTHD-MCD/gracethd-mcd-v2.0_schema_v01.png)
+![MCD sauce gracethd](https://raw.githubusercontent.com/GraceTHD-community/GraceTHD-MCD/master/docs/GraceTHD-MCD/gracethd-mcd-v2.0_schema_v01.png)
 
 C'est jolie ça decrit bien les choses. Mais ce n'est _pas_ un MCD. Modèle physique ? genere le toi même pépére... Sinon regarde la feuille excel. 
 
