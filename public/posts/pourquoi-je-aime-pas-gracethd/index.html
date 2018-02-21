@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-us" lang="en-us">
+<head>
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="generator" content="Hugo 0.31.1" />
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+  <title>Pourquoi je n&#39;aime pas GraceTHD &middot; Remi Desgrange </title>
+
+  
+  <link rel="stylesheet" href="https://blog.desgrange.infocss/print.css" media="print">
+  <link rel="stylesheet" href="https://blog.desgrange.infocss/poole.css">
+  <link rel="stylesheet" href="https://blog.desgrange.infocss/syntax.css">
+  <link rel="stylesheet" href="https://blog.desgrange.infocss/hyde.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Abril+Fatface|PT+Sans:400,400i,700">
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/apple-touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" href="/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Remi Desgrange " />
+</head>
+
+  <body class=" ">
+  <div class="sidebar">
+  <div class="container sidebar-sticky">
+    <div class="sidebar-about">
+      <a href="https://blog.desgrange.info"><h1>Remi Desgrange </h1></a>
+      <p class="lead">
+       Blog about tech, Python, GIS, OpenData, and maybe more. 
+      </p>
+    </div>
+
+    <ul class="sidebar-nav">
+      <li><a href="https://blog.desgrange.info">Home</a> </li>
+      <li><a href="/about/"> About </a></li>
+    </ul>
+
+    <p>&copy; 2018. All rights reserved. </p>
+  </div>
+</div>
+
+    <div class="content container">
+    <div class="post">
+  <h1>Pourquoi je n&#39;aime pas GraceTHD</h1>
+  <span class="post-date">Tue, Feb 20, 2018</span>
+  
+
+<h1 id="pourquoi-je-n-aime-pas-gracethd">Pourquoi je n&rsquo;aime pas Gracethd</h1>
+
+<p>Fallait que ça sorte. <a href="http://www.avicca.org/content/gracethd-projets">GraceTHD</a>, c&rsquo;est un modèle de données, à la base d&rsquo;échange, entre les différent acteur des télécoms.  Ça à été concocté par l&rsquo;<a href="http://www.avicca.org">avicca</a>. C&rsquo;est très sérieux.</p>
+
+<p>Ce modèle devrait permettre à tous les acteurs des télécoms de s&rsquo;entendre et de s&rsquo;echanger des donnés cartographique sur leur réseaux sans peines. Use case : vous êtes un operateur (Orange, SFR, etc&hellip;), vous demandez une boite de TP de vous poser la fibre là, en bas de chez vous. Vous demandez une étude à un sous-traitant &ldquo;bureau d&rsquo;étude&rdquo;, qui va transmettre les fichiers au sous-traitant, qui vous transmettrea les données &ldquo;recollé&rdquo; une fois fini. La promesse c&rsquo;est qu&rsquo;il n&rsquo;y ait plus de friction. En plus vous pourriez faire votre compta dedans, GraceImmo ça le fait non ?</p>
+
+<h1 id="ça-partait-bien">Ça partait bien</h1>
+
+<p>Franchement ça partait bien. Des solutions OpenSources, comme ça pas de frein économique à l&rsquo;adoption. Des solutions éprouvés :</p>
+
+<ul>
+<li><code>Qgis</code></li>
+<li><code>postgis</code></li>
+<li><code>spatialite</code> : pour le test</li>
+</ul>
+
+<p>Herbergé sur Github, une belle doc. Un redmine (ça c&rsquo;est moins cool mais bon&hellip;)avec une super reactivité. Franchement, ça partait bien.</p>
+
+<h1 id="et-puis-tu-regarde-le-mcd">Et puis tu regarde le &ldquo;MCD&rdquo;</h1>
+
+<p>Bon alors déjà un mcd c&rsquo;est ça :
+<img src="images/MCD-levrais.jpg" alt="MCD le vrais" /></p>
+
+<p>Je n&rsquo;ai jamais trouvé un MCD chez GraceTHD. J&rsquo;ai trouvé ça :</p>
+
+<p><img src="https://github.com/GraceTHD-community/GraceTHD-MCD/blob/master/docs/GraceTHD-MCD/gracethd-mcd-v2.0_schema_v01.png" alt="MCD sauce gracethd" /></p>
+
+<p>C&rsquo;est jolie ça decrit bien les choses. Mais ce n&rsquo;est <em>pas</em> un MCD. Modèle physique ? genere le toi même pépére&hellip; Sinon regarde la feuille excel.</p>
+
+<h1 id="et-puis-tu-regarde-les-sources">Et puis tu regarde les sources</h1>
+
+<p><a href="https://github.com/GraceTHD-community/GraceTHD-MCD/tree/master/sql_postgis">les sources</a></p>
+
+<p>Franchement ça partait pas si mal. A la base GraceTHD était censé être un modèle <em>d&rsquo;échange</em> donc au final même si le schema était un peu moche on s&rsquo;en foutait, si on voulait un SI différent on le faisait et puis :</p>
+
+<blockquote>
+<p>Ce n&rsquo;est pas un format, c&rsquo;est un modèle de données. (page 7)
+Pas seulement pour l&rsquo;échange, gestion patrimoniale (stockage, analyses, contrôles, etc.).
+Depuis <a href="http://www.avicca.org/document/17214/dl">avicca</a></p>
+</blockquote>
+
+<p>Oui alors&hellip; Il y a plusieurs choses qui me chiffonne :</p>
+
+<p>TODO
+* c&rsquo;est moche (example des tables toute plus dégeux les une que les autre)
+* c&rsquo;est limité a 10 charactères pour rester au siecle dernier (shapefile : link shapefilemustdie)
+* c&rsquo;est inconsistant (positon vs masque).
+* 0 utilisation du moteur de la base. Grace-Check à la rescouse (ou pas)</p>
+
+<h1 id="conclusion">Conclusion</h1>
+
+<p>Oui j&rsquo;ai une versionb &ldquo;jacky&rdquo; de GraceTHD, mais ma version est exploitablke au jour le jour pour :</p>
+
+<ul>
+<li>de l&rsquo;étude</li>
+<li>de l&rsquo;exploitation</li>
+<li>de la gestion</li>
+<li>de l&rsquo;analytics</li>
+</ul>
+
+</div>
+
+
+    </div>
+
+    
+  </body>
+</html>

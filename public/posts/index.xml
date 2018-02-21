@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Remi Desgrange </title>
+    <link>https://blog.desgrange.info/posts/</link>
+    <description>Recent content in Posts on Remi Desgrange </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Feb 2018 20:46:58 +0100</lastBuildDate>
+    
+	<atom:link href="https://blog.desgrange.info/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Pourquoi je n&#39;aime pas GraceTHD</title>
+      <link>https://blog.desgrange.info/posts/pourquoi-je-aime-pas-gracethd/</link>
+      <pubDate>Tue, 20 Feb 2018 20:46:58 +0100</pubDate>
+      
+      <guid>https://blog.desgrange.info/posts/pourquoi-je-aime-pas-gracethd/</guid>
+      <description>Pourquoi je n&amp;rsquo;aime pas Gracethd Fallait que ça sorte. GraceTHD, c&amp;rsquo;est un modèle de données, à la base d&amp;rsquo;échange, entre les différent acteur des télécoms. Ça à été concocté par l&amp;rsquo;avicca. C&amp;rsquo;est très sérieux.
+Ce modèle devrait permettre à tous les acteurs des télécoms de s&amp;rsquo;entendre et de s&amp;rsquo;echanger des donnés cartographique sur leur réseaux sans peines. Use case : vous êtes un operateur (Orange, SFR, etc&amp;hellip;), vous demandez une boite de TP de vous poser la fibre là, en bas de chez vous.</description>
+    </item>
+    
+    <item>
+      <title>Right Management in Postgresql</title>
+      <link>https://blog.desgrange.info/posts/right-management-on-postgresql/</link>
+      <pubDate>Tue, 28 Nov 2017 10:29:57 +0100</pubDate>
+      
+      <guid>https://blog.desgrange.info/posts/right-management-on-postgresql/</guid>
+      <description>Recently I though about (re)starting a blog, but didn&amp;rsquo;t find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.
+Right Management in Postgresql @Fibrea we use postgresql a lot, it&amp;rsquo;s the heart of our system. Operating this DB day to day is quite challenging some time. So here is what I understand from my experience and reading on right management in postgresql.</description>
+    </item>
+    
+  </channel>
+</rss>
