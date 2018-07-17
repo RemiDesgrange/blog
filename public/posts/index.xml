@@ -6,20 +6,10 @@
     <description>Recent content in Posts on Remi Desgrange </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 20 Feb 2018 20:46:58 +0100</lastBuildDate>
+    <lastBuildDate>Tue, 28 Nov 2017 10:29:57 +0100</lastBuildDate>
     
 	<atom:link href="https://blog.desgrange.info/posts/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>Pourquoi je n&#39;aime pas GraceTHD</title>
-      <link>https://blog.desgrange.info/posts/pourquoi-je-aime-pas-gracethd/</link>
-      <pubDate>Tue, 20 Feb 2018 20:46:58 +0100</pubDate>
-      
-      <guid>https://blog.desgrange.info/posts/pourquoi-je-aime-pas-gracethd/</guid>
-      <description>Pourquoi je n&amp;rsquo;aime pas Gracethd Fallait que ça sorte. GraceTHD, c&amp;rsquo;est un modèle de données, à la base d&amp;rsquo;échange, entre les différent acteur des télécoms. Ça à été concocté par l&amp;rsquo;avicca. C&amp;rsquo;est très sérieux.
-Ce modèle devrait permettre à tous les acteurs des télécoms de s&amp;rsquo;entendre et de s&amp;rsquo;echanger des donnés cartographique sur leur réseaux sans peines. Use case : vous êtes un operateur (Orange, SFR, etc&amp;hellip;), vous demandez une boite de TP de vous poser la fibre là, en bas de chez vous.</description>
-    </item>
     
     <item>
       <title>Right Management in Postgresql</title>
