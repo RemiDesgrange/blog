@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on Remi Desgrange </title>
+    <title>Posts on Remi Desgrange&#39; blog</title>
     <link>https://blog.desgrange.info/posts/</link>
-    <description>Recent content in Posts on Remi Desgrange </description>
+    <description>Recent content in Posts on Remi Desgrange&#39; blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 28 Sep 2018 02:00:00 +0200</lastBuildDate>
@@ -22,13 +22,14 @@ Tech This site is build with Hugo. Code is stored on Github. And the hosting par
     </item>
     
     <item>
-      <title>Right Management in Postgresql</title>
+      <title></title>
       <link>https://blog.desgrange.info/posts/right-management-on-postgresql/</link>
-      <pubDate>Tue, 28 Nov 2017 10:29:57 +0100</pubDate>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://blog.desgrange.info/posts/right-management-on-postgresql/</guid>
-      <description>Recently I though about (re)starting a blog, but didn&amp;rsquo;t find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.
-Right Management in Postgresql @Fibrea we use postgresql a lot, it&amp;rsquo;s the heart of our system. Operating this DB day to day is quite challenging some time. So here is what I understand from my experience and reading on right management in postgresql.</description>
+      <description>title: &amp;ldquo;Right Management in Postgresql&amp;rdquo; date: 2017-11-28T10:29:57+01:00
+daft: true Recently I though about (re)starting a blog, but didn&amp;rsquo;t find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.
+Right Management in Postgresql @Fibrea we use postgresql a lot, it&amp;rsquo;s the heart of our system. Operating this DB day to day is quite challenging some time.</description>
     </item>
     
   </channel>

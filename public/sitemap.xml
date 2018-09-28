@@ -9,7 +9,15 @@
   
   <url>
     <loc>https://blog.desgrange.info/posts/right-management-on-postgresql/</loc>
-    <lastmod>2017-11-28T10:29:57+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.desgrange.info/about/</loc>
+  </url>
+  
+  <url>
+    <loc>https://blog.desgrange.info/about/</loc>
+    <priority>0</priority>
   </url>
   
   <url>
