@@ -1,7 +1,7 @@
 ---
 title: "Welcome !"
-date: 2018-07-17T21:07:33+02:00
-draft: true
+date: 2018-09-28T02:00:00+02:00
+draft: false
 ---
  
 Hi👋! This is my blog where I will mostly talk about tech. Most post will be in english, but I have some french content yet to be released.

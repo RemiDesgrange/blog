@@ -1,8 +1,10 @@
 ---
-title: "Pourquoi je n'aime pas GraceTHD"
-date: 2018-02-20T20:46:58+01:00
+title: "Pourquoi je n'aime pas GraceTHD, partie 1"
+date: 2018-09-28T18:25:57+02:00
 draft: true
 ---
+
+Aricle en 2 partie, [partie 2](/posts/pourquoi-je-aime-pas-gracethd-part2)
 
 Fallait que ça sorte. [GraceTHD](http://www.avicca.org/content/gracethd-projets), c'est un modèle de données, à la base d'échange, entre les différents acteurs des télécoms.  Ça à été concocté par l'[avicca](http://www.avicca.org). C'est très sérieux. 
 
@@ -99,7 +101,7 @@ WHERE
   t_ebp.bp_sf_code = t_suf.sf_code AND
   t_suf.sf_nd_code = t_noeud.nd_code;
 ```
-Sérieux ? les jointures vous connaissez ? un bon nombre de vue matérialisé sont généré. Si le modèle avait été fait correctement, _aucune_ de ces vues matérialisé n'auraient étés nécéssaires. a vous les cronjob pourrie et autre job rundeck à maintenir. TODO, run de grace check avec un 2 PEV, 1 pour voir le plan pourrie sans join et celui avec un join
+Sérieux ? les jointures vous connaissez ? un bon nombre de vue matérialisé sont généré. Si le modèle avait été fait correctement, _aucune_ de ces vues matérialisées n'auraient étés nécéssaires. a vous les cronjob pourrie et autre job rundeck à maintenir. TODO, run de grace check avec un 2 PEV, 1 pour voir le plan pourrie sans join et celui avec un join
 
 # Vivre au 16ème siècle
 
