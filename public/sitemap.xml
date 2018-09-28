@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.desgrange.info/posts/welcome/</loc>
+    <lastmod>2018-09-28T02:00:00+02:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.desgrange.info/posts/right-management-on-postgresql/</loc>
     <lastmod>2017-11-28T10:29:57+01:00</lastmod>
   </url>
@@ -14,13 +19,13 @@
   
   <url>
     <loc>https://blog.desgrange.info/posts/</loc>
-    <lastmod>2017-11-28T10:29:57+01:00</lastmod>
+    <lastmod>2018-09-28T02:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://blog.desgrange.info/</loc>
-    <lastmod>2017-11-28T10:29:57+01:00</lastmod>
+    <lastmod>2018-09-28T02:00:00+02:00</lastmod>
     <priority>0</priority>
   </url>
   

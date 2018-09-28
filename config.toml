@@ -1,4 +1,4 @@
-baseURL = "https://blog.desgrange.info"
+baseURL = "https://blog.desgrange.info/"
 languageCode = "en-us"
 title = "Remi Desgrange "
 theme="hyde"

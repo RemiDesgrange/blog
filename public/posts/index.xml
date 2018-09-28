@@ -6,10 +6,20 @@
     <description>Recent content in Posts on Remi Desgrange </description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 28 Nov 2017 10:29:57 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 28 Sep 2018 02:00:00 +0200</lastBuildDate>
     
 	<atom:link href="https://blog.desgrange.info/posts/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Welcome !</title>
+      <link>https://blog.desgrange.info/posts/welcome/</link>
+      <pubDate>Fri, 28 Sep 2018 02:00:00 +0200</pubDate>
+      
+      <guid>https://blog.desgrange.info/posts/welcome/</guid>
+      <description>Hi👋! This is my blog where I will mostly talk about tech. Most post will be in english, but I have some french content yet to be released.
+Tech This site is build with Hugo. Code is stored on Github. And the hosting part is handeled by Netlify</description>
+    </item>
     
     <item>
       <title>Right Management in Postgresql</title>

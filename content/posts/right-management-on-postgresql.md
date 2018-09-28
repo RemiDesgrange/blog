@@ -1,7 +1,7 @@
 ---
 title: "Right Management in Postgresql"
 date: 2017-11-28T10:29:57+01:00
-daft: true
+daft: pompom
 ---
 
 Recently I though about (re)starting a blog, but didn't find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.
