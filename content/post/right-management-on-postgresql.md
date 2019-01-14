@@ -1,7 +1,7 @@
 ---
 title: "Right Management in Postgresql"
+draft: true
 date: 2017-11-28T10:29:57+01:00
-daft: false
 ---
 
 Recently I though about (re)starting a blog, but didn't find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.
@@ -72,6 +72,21 @@ CREATE TABLE test.test_table2 (id uuid, data2 int NOT NULL);
 SET ROLE bob;
 SELECT * FROM test.test_table2; -- FAIL
 ```
+
+In order to this to work, you need to add default privileges :
+
+```SQL
+SET ROLE postgres;
+ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA test GRANT ALL PRIVILEGES ON ALL TABLES to bob; 
+```
+
+This lines contains quite a lot ! You are modifying default privileges (ie: privileges that will be applied on newly created tables/sequences/etc...). Default privileges from a specific roles (postgres), in a specific schema (test), then on top of that you gives a normal grant. The part `FOR ROLE postgres` takes me quite a bit to understand.
+
+## Grant and default: what the heck ?
+
+
+
+
  
 ## Backup user
 
