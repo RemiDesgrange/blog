@@ -1,12 +1,36 @@
 baseURL = "https://blog.desgrange.info/"
 languageCode = "en-us"
 title = "Remi Desgrange's blog"
-theme="basics"
+theme="beautifulhugo"
 
+pygmentsCodeFences = true
+pygmentsUseClasses = true
 
 
 [params]
     description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
     author= "Rémi Desgrange"
-	github= "RemiDesgrange"
+    #logo = "img/avatar-icon.png" # Expecting square dimensions
+    rss = true
+    readingTime = true
+    wordCount = true
+    showRelatedPosts = true
+    subtitle = "Blog about tech, Python, GIS, OpenData, and maybe more."
   
+[Author]
+  name = "Rémi Desgrange"
+  email = "remi+blog@desgrange.info"
+  github = "RemiDesgrange"
+  twitter = "DesgrangeRemi"
+  linkedin = "rdesgrange"
+  stackoverflow = "users/8204956/rémi-desgrange"
+
+[[menu.main]]
+    name = "Blog"
+    url = ""
+    weight = 1
+
+[[menu.main]]
+    name = "About"
+    url = "about/"
+    weight = 3

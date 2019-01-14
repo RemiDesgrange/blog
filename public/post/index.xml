@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Remi Desgrange&#39;s blog</title>
-    <link>https://blog.desgrange.info/</link>
-    <description>Recent content on Remi Desgrange&#39;s blog</description>
+    <title>Posts on Remi Desgrange&#39;s blog</title>
+    <link>https://blog.desgrange.info/post/</link>
+    <description>Recent content in Posts on Remi Desgrange&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 28 Nov 2017 10:29:57 +0100</lastBuildDate>
     
-	<atom:link href="https://blog.desgrange.info/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.desgrange.info/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -29,16 +29,6 @@ Right Management in Postgresql @Fibrea we use postgresql a lot, it&amp;rsquo;s t
       <guid>https://blog.desgrange.info/post/welcome/</guid>
       <description>Hi👋! This is my blog where I will mostly talk about tech. Most post will be in english, but I have some french content yet to be released.
 Tech This site is build with Hugo. Code is stored on Github. And the hosting part is handeled by Netlify</description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>https://blog.desgrange.info/about/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>https://blog.desgrange.info/about/</guid>
-      <description>Hi👋! I&amp;rsquo;m Rémi, French guy working for telco (Covage) as Software Engineer. I&amp;rsquo;m living in the french alps near the italian border. I enjoy beeing in mountain and learing news things !
-This blog was started to remember stuff that I need to remember, like &amp;ldquo;How right management work on PG ?&amp;rdquo; or &amp;ldquo;configuring gitlab-ci to deploy my python stuff.&amp;rdquo;. Also to share personal thought about subject I care about (that&amp;rsquo;s a lot !</description>
     </item>
     
   </channel>

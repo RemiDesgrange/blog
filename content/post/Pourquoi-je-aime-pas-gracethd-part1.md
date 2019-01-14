@@ -1,10 +1,8 @@
 ---
-title: "Pourquoi je n'aime pas GraceTHD, partie 1"
+title: "Pourquoi je n'aime pas GraceTHD"
 date: 2018-09-28T18:25:57+02:00
 draft: true
 ---
-
-Aricle en 2 partie, [partie 2](/posts/pourquoi-je-aime-pas-gracethd-part2)
 
 Fallait que ça sorte. [GraceTHD](http://www.avicca.org/content/gracethd-projets), c'est un modèle de données, à la base d'échange, entre les différents acteurs des télécoms.  Ça à été concocté par l'[avicca](http://www.avicca.org). C'est très sérieux. 
 
@@ -54,7 +52,7 @@ Trop cool !! Malgré tous cela. Il y a je trouve de gros soucis dans l'implémen
 # Aucune notion de perf
 
 Quand vous avez un réseau vous vous retrouvez vite avec plusieurs centainew de câbles, qui représente plusieurs dizaines de milliers de fibres, et donc de connexions entrent elles. Dans toutes les tables, la clé primaire est un `varchar`
-, souvent de taille 255. Je suis franchement pas fan des SERIAL (voir [le blog de clever cloud](https://www.clever-cloud.com/blog/engineering/2015/05/20/why-auto-increment-is-a-terrible-idea/)) mais le `varchat(255)` m'a tué... c'est très peut maintenable. Vous pouvez tapez sur google `Can I have varchar PK` _tous_ les postes vous dirons non (ex : [mailing list pg](https://www.postgresql.org/message-id/5A03DE8B-8FF6-4CFE-95AD-D9019437462C%40decibel.org)). Il y aurait au moins pu y avoir une contrainte sur la non-présence de charactère dans ces champs `varchar`. Dans la vrais vie, il est courant d'avoir une clé primaire "technique" (`serial`, `uuid`, etc..) et un id business (avec contrainte `UNIQUE`. Mais pas là, parce que #Yolo. C'est con ça partait pas si mal...
+, souvent de taille 255. Je suis franchement pas fan des SERIAL (voir [le blog de clever cloud](https://www.clever-cloud.com/blog/engineering/2015/05/20/why-auto-increment-is-a-terrible-idea/)) mais le `varchar(255)` m'a tué... c'est très peut maintenable. Vous pouvez tapez sur google `Can I have varchar PK` _tous_ les postes vous dirons : *non* (ex : [mailing list pg](https://www.postgresql.org/message-id/5A03DE8B-8FF6-4CFE-95AD-D9019437462C%40decibel.org)). Il y aurait au moins pu y avoir une contrainte sur la non-présence de charactère dans ces champs `varchar`. Dans la vrais vie, il est courant d'avoir une clé primaire "technique" (`serial`, `uuid`, etc..) et un id "business" (avec contrainte `UNIQUE`. Mais pas là, parce que #Yolo. C'est con ça partait pas si mal...
 
 # Très peux de contraintes
 
