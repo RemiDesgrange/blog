@@ -1,6 +1,6 @@
 ---
 title: "Right Management in Postgresql"
-draft: true
+draft: false
 date: 2017-11-28T10:29:57+01:00
 ---
 
@@ -80,12 +80,11 @@ SET ROLE postgres;
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA test GRANT ALL PRIVILEGES ON ALL TABLES to bob; 
 ```
 
-This lines contains quite a lot ! You are modifying default privileges (ie: privileges that will be applied on newly created tables/sequences/etc...). Default privileges from a specific roles (postgres), in a specific schema (test), then on top of that you gives a normal grant. The part `FOR ROLE postgres` takes me quite a bit to understand.
+This lines contains quite a lot ! You are modifying default privileges (ie: privileges that will be applied on newly created tables/sequences/etc...). Default privileges created by a specific roles (postgres), in a specific schema (test), then on top of that you gives a normal grant. The part `FOR ROLE postgres` takes me quite a bit to understand.
 
 ## Grant and default: what the heck ?
 
-
-
+If you have multiple users that create tables, you will need to put this role name in the `FOR ROLE` clause. If you don't, you'll run into privileges errors.
 
  
 ## Backup user
