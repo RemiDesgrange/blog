@@ -6,6 +6,8 @@
     <description>Recent content in Categories on Remi Desgrange&#39;s blog</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <managingEditor>remi&#43;blog@desgrange.info (Rémi Desgrange)</managingEditor>
+    <webMaster>remi&#43;blog@desgrange.info (Rémi Desgrange)</webMaster>
     
 	<atom:link href="https://blog.desgrange.info/categories/index.xml" rel="self" type="application/rss+xml" />
     
