@@ -1,5 +1,5 @@
 ---
-title: "Nivo, histoire d'un ras Le bol"
+title: "J'annonce: Nivo"
 date: 2019-07-25T21:38:30+02:00
 draft: true
 ---
@@ -75,9 +75,4 @@ Bonus :
 lequel j'applique un XSLT et ça génére le HTML (identique a celui de MF).
 * Lorsque vous regardez un BRA précédent. l'appli affiche si la prévision de risque (stable, à la
   hausse/baisse) était juste ou non.
-
-
-
-
-
 

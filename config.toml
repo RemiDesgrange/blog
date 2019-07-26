@@ -16,7 +16,7 @@ pygmentsUseClasses = true
     wordCount = true
     showRelatedPosts = true
     subtitle = "Blog about tech, Python, GIS, OpenData, and maybe more."
-  
+    commit = "https://github.com/RemiDesgrange/blog/tree/"
 [Author]
   name = "Rémi Desgrange"
   email = "remi+blog@desgrange.info"
