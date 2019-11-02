@@ -63,7 +63,7 @@ With this setup you'll have a shared server, with completely separate PostgreSQL
 * You don't need docker
 * easy upgrade
 * easy blue/green (feature flag, whatever you call it)
-* you can have cluster in multiple versions of PostgreSQLql.
+* you can have cluster in multiple versions of PostgreSQL.
 
 ## Con
 
