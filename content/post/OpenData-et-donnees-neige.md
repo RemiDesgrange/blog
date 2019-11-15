@@ -136,7 +136,7 @@ Vous avez surement remarqué que sur le site de Météo France qui nous présent
 
 Ce que je ne savais pas c'est que le site [avalanches.org](https://www.avalanches.org/) dispose lui des geometries comme il faut.
 
-Ce n'est _pas_ opendata, mais rien de secret, le site télécharge les geojson depuis `https://www.avalanches.org/wp-content/plugins/eaws-map/ajax/get.php?eaws-map-type-id=4` 
+Ce n'est _pas_ opendata, mais rien de secret, le site télécharge les geojson depuis `https://www.avalanches.org/wp-content/plugins/eaws-map/ajax/get.php?eaws-map-type-id=4`. Bien entendu, prévoyer de nettoyer la données, les noms changeant encore (ex avec la corse).
 
 
 [^2]: Quand je dis exploitable, cela veut dire utilisable par une bibliothèque d'affichage de carte (OpenLayer, Leaflet, Mapbox) ou transformable via les outils type `ogr2ogr`.
