@@ -8,7 +8,7 @@ Je joue depuis quelques temps avec les données OpenData neige. J'ai un peu gal�
 
 ## De quoi on parle ?
 
-Je vais parler des données neige disponible en open data, ou presque, pour les données non open data, au sens non réutilisable sans condition, je mettrais un encart.
+Je vais parler des données neige disponible en open data, ou presque, pour les données non open data, au sens non réutilisable sans condition, je spécifierais bien les conditions d'accès.
 
 On parle donc des données:
 
@@ -124,6 +124,22 @@ Exemple : `http://www.isaw.ch/idod/idod.php?s=FCHE1&f=json&d=3` avec `s` qui est
 ### Balises Romma
 
 Les données des balises Romma appartiennent au propriétaire de la balise, si vous voulez récupérer les données, il vous faudra passer un accord avec le propriétaire. C'est assez contraignant, je n'ai pas prévu de jouer avec leur données.
+
+### Carte des massifs
+
+Vous avez surement remarqué que sur le site de Météo France qui nous présente les BRA, il y a une carte avec la geometrie (le parcelaire, la geographie, etc...) pour chaque massif. Je voulais pouvoir afficher ces massifs sur une carte, pour que ce soit plus parlant. Je n'avais pas réussi à obtenir cela sous une forme exploitable, c'est à dire du GeoJSON, shapefile, etc... [^2]. Ce que j'avais essayé (*don't do this at home !*) en mode _gros hack dégeux_ :
+
+* récupérer le contenu de la balise html `<area>` et de la transformer en geojson, ce geojson à une projection fausse et farfelu qui ne correspond à rien.
+* importer ce geojson dans QGIS
+* reprojecter et transformer les geometries fausses avec les plugins processing de QGIS (`v.transform` etc...)
+* obtenir un truc assez moche.
+
+Ce que je ne savais pas c'est que le site [avalanches.org](https://www.avalanches.org/) dispose lui des geometries comme il faut.
+
+Ce n'est _pas_ opendata, mais rien de secret, le site télécharge les geojson depuis `https://www.avalanches.org/wp-content/plugins/eaws-map/ajax/get.php?eaws-map-type-id=4` 
+
+
+[^2]: Quand je dis exploitable, cela veut dire utilisable par une bibliothèque d'affichage de carte (OpenLayer, Leaflet, Mapbox) ou transformable via les outils type `ogr2ogr`.
 
 ## Remerciement
 
