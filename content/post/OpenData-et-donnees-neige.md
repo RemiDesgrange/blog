@@ -77,6 +77,9 @@ Pour les json journaliers :
 `https://donneespubliques.meteofrance.fr/donnees_libres/Pdf/BRA/bra.%Y%m%d.json`
 
 Idem pour les BRA. C'est très pratique. Par contre, si votre fichier est introuvable, le serveur vous renvoie un code 302, qui vous redirige vers la page d'erreur "fichier non trouvé", servi avec un code HTTP... 200. Du grand art 👏.
+
+![Schema à l'arrache du process de fichier non trouvé chez Météo France](/images/Meteo_France_not_found_non_sense.png)
+
 Exemple en python avec `requests` :
 
 ```python
