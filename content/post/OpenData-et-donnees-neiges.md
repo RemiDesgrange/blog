@@ -1,5 +1,5 @@
 ---
-title: "Open data et données neige"
+title: "Open data et données neiges"
 date: 2019-11-02T18:34:50+01:00
 draft: false
 ---
@@ -8,18 +8,18 @@ Je joue depuis quelques temps avec les données OpenData neige. J'ai un peu gal�
 
 ## De quoi on parle ?
 
-Je vais parler des données neige disponible en open data, ou presque, pour les données non open data, au sens non réutilisable sans condition, je spécifierais bien les conditions d'accès.
+Je vais parler des données neiges disponible en open data, ou presque, pour les données non open data, au sens non réutilisable sans conditions, je spécifierais bien les conditions d'accès.
 
 On parle donc des données:
 
-* Bulletin Estimation Risque Avalanche ou BERA, souvent encore appelé BRA
-* Poste nivo. Données de qualité car prélevé par des humains
+* Bulletin Estimation Risque Avalanche ou BRA, En début et fin de saison, INA (Information Neige Avalanche)
+* Poste nivo. Données collecté par des pisteurs dans une des 132 stations. Données de qualitées car prélevées par des être humains, formé et connaissant bien le sujet.
 * des données des stations de mesures comme le réseau Romma, les balises Flowcapt.
 
-Il est à noter que les données des balises "nivo" ne sont *pas* disponible. Vous pouvez consulter les graphs mis a disposition par Météo France[^1] ex:
+Il est à noter que les données des balises "nivoses" ne sont *pas* disponible. Vous pouvez consulter les graphs mis a disposition par Météo France[^1] ex:
 ![Nivose hebdo bonneval. Du bonheur n'est-ce pas ?!](/images/BONNE_hebd.gif)
 
-Mais pour récupérer les données brute, il vous en coutera :
+Mais pour récupérer les données brutes, il vous en coutera :
 
 * 65€ de frais de mises en services
 * 376€ par an et par balises nivose
@@ -110,7 +110,7 @@ Malheureusement il semble qu'il manque des stations, certain CSV ont des ID qui 
 
 Passons maintenant aux données, le CSV. Quand vous avez un champ marqué `mq` cela veut dire `NULL`, case vide, pas de données.
 
-Ensuite vous verrez plein de chiffre. Si on regarde la doc il y a des codes, mais que peuvent bien vouloir dire ces codes ? Et bien ce sont ceux que les pisteurs transmettent à Météo France, aucune description n'est faites de ces codes, j'ai dû demander des copies des livres de formations des pisteurs pour en avoir la signification. C'est clairement pas cool de la part de Météo France. 
+Ensuite vous verrez plein de chiffres. Si on regarde la doc il y a des codes, mais que peuvent bien vouloir dire ces codes ? Et bien ce sont ceux que les pisteurs transmettent à Météo France, aucune description n'est faites de ces codes, j'ai dû demander des copies des livres de formations des pisteurs pour en avoir la signification. C'est clairement pas cool de la part de Météo France. [Article dédié ici]({{<relref "decryptage-donnees-poste-nivo.md" >}})
 
 
 ## Données non Météo France
@@ -143,7 +143,7 @@ Ce n'est _pas_ opendata, mais rien de secret, le site télécharge les geojson d
 
 ## Remerciement
 
-Je tiens a remercier Météo France, au fond, si leur site web était moins moisi, je n'aurais pas investigué tout ceci. Merci à Aurélien, pour le lien du FTP Météo France qui m'a permis de farfouiller. Merci a Alain Duclos et à tout l'équipe de [data-avalanche.org](https://data-avalanche.org) d'avoir pris le temps de répondre à mes questions. Merci également à l'association Romma pour ses éléments.
+Je tiens a remercier Météo France, au fond, si leur site web était moins moisi, je n'aurais pas investigué tout ceci. Merci à Aurélien, pour le lien du FTP Météo France qui m'a permis de farfouiller. Merci a Alain Duclos et à tout l'équipe de [data-avalanche.org](https://data-avalanche.org) d'avoir pris le temps de répondre à mes questions. Merci également à l'association Romma pour ses éléments. Et enfin merci Elsa pour les compléments sur les postes Nivo.
 
 
 *Stay tune* car il y a un *(not so) secret project* dans les cartons pour exploiter toute ces données.
