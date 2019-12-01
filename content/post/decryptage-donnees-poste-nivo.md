@@ -1,18 +1,18 @@
 ---
 title: "Decryptage des codes des données poste Nivo"
 date: 2019-11-29T21:08:16+01:00
-draft: true
+draft: false
 ---
 
 
 Suite à l'article sur les [données neiges en open-data]({{<relref "OpenData-et-donnees-neiges.md">}}) J'ai réussi à mettre la main sur les codes que fournissent les pisteurs lors de relevés sur un poste Nivo. Données disponible en opendata [chez Météo France](https://donneespubliques.meteofrance.fr/?fond=produit&id_produit=94&id_rubrique=32)
 
-Il y a certain code que je n'ai pas réussi à retrouver, si certain savent, qu'ils se manifestent !
+Il y a un code que je n'ai pas réussi à retrouver, si certain savent, qu'ils se manifestent ! par exemple [sur twitter](https://twitter.com/DesgrangeRemi)
 
 
 | Nom | Colonnes dans le fichier CSV | Valeurs possibles | Description |
 |-----|------------------------------| ----------------- | ----------- |
-|Temps Présent| `ww` | 0 |Aucun des phénomènes suivants à la station au moment de l’observation : brouillard pluie neige orage |
+|Temps Présent| `ww` | 0 | Aucun des phénomènes suivants à la station au moment de l’observation : brouillard pluie neige orage |
 | | | 44 | Brouillard mais ciel visible |
 | | | 45 | Brouillard ciel invisible |
 | | | 48 | Brouillard déposant du givre mais viel visible |
@@ -72,7 +72,7 @@ Il y a certain code que je n'ai pas réussi à retrouver, si certain savent, qu'
 | | | 9 |Mer de nuage complete supérieur à 1500m |
 | | | / |Observation impossible (station dans le brouillard) |
 | Chasse neige en altitude | `chasse_neige` | 0 | Pas de chasse neige |
-| | | 	 |Il y a de la chasse-neige depuis la dernière observation mais pas actuellement
+| | | 1 | Il y a de la chasse-neige depuis la dernière observation mais pas actuellement
 | | | 2 | Chasse neige modérée d’Est |
 | | | 3 | Chasse neige modérée de Sud |
 | | | 4 | Chasse neige modérée d’Ouest |
@@ -128,3 +128,9 @@ Il y a certain code que je n'ai pas réussi à retrouver, si certain savent, qu'
 | Homogénéité de la couche | `homogeneite` | 0 | Il a neigé plus de 5cm depuis la dernière observation. Carottage vertical sur la planche |
 | | | 1 | Il n’a pas neigé (ou moins de 5cm) et la couche de 10cm sous la surface est homogène (une seule strate). Carottage horizontal entre la surface de la neige et le niveau -10cm |
 | | | 2 | Il n’a pas neigé (ou moins de 5cm) et la couche de 10cm sous la surface est constitué d’une ou plusieurs strates de nature ou de dureté différente. Pas de mesure de masse volumique |
+| Phénomène Special | `phenspeN` | | Je n'ai pas trouvé d'indicateur dans le guide |
+| Etendue cche nuageuse 1 | `nnuage1` | | Je n'ai pas trouvé d'indicateur dans le guide |
+
+Personnellement je trouve que ces données "bruts" sont difficillement utilisable par le chalan. Je vais essayer de batir des visus qui permettent de mieux comprendre les indicateurs. Ce sera mon passe temps de cet hiver 😀. Je trouve regrétable que Météo France diffuse des données sans en révéler la nature des données libérées.
+
+Bon Ski !
