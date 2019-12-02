@@ -67,9 +67,9 @@ Il y a un code que je n'ai pas réussi à retrouver, si certain savent, qu'ils s
 | | | 4 |Mer de nuage partielle inférieur à 1000m |
 | | | 5 |Mer de nuage partielle entre 1000 et 1500m |
 | | | 6 |Mer de nuage partielle supérieur à 1500m |
-| | | 7 |Mer de nuage complete inférieur à 1000m |
-| | | 8 |Mer de nuage complete entre 1000 et 1500m |
-| | | 9 |Mer de nuage complete supérieur à 1500m |
+| | | 7 |Mer de nuage complète inférieur à 1000m |
+| | | 8 |Mer de nuage complète entre 1000 et 1500m |
+| | | 9 |Mer de nuage complète supérieur à 1500m |
 | | | / |Observation impossible (station dans le brouillard) |
 | Chasse neige en altitude | `chasse_neige` | 0 | Pas de chasse neige |
 | | | 1 | Il y a de la chasse-neige depuis la dernière observation mais pas actuellement
@@ -82,8 +82,8 @@ Il y a un code que je n'ai pas réussi à retrouver, si certain savent, qu'ils s
 | | | 8 | Chasse neige forte d’Ouest |
 | | | 9 | Chasse neige forte de Nord |
 | | | / | Observation impossible (nuage ou brouillard) |
-| Description de l’avalanches observée | `aval_descr` | | Je rien trouvé dans le guide qui correspondent à ce libellé. |
-|Genre d’avalanches | `aval_genre` | 0 |Rien à signaler. Pas d’avalanches, ni de coulées, ni de fissures |
+| Description de l’avalanche observée | `aval_descr` | | Je rien trouvé dans le guide qui correspondent à ce libellé. |
+| Genre d’avalanches | `aval_genre` | 0 |Rien à signaler. Pas d’avalanches, ni de coulées, ni de fissures |
 | | | 1 | Aucune avalanches mais fissure(s) dans le manteau neigeux |
 | | | 2 | Coulées sèches ou humides |
 | | | 3 | Avalanche(s) de neige récente, sèche, départ ponctuel |
@@ -128,9 +128,11 @@ Il y a un code que je n'ai pas réussi à retrouver, si certain savent, qu'ils s
 | Homogénéité de la couche | `homogeneite` | 0 | Il a neigé plus de 5cm depuis la dernière observation. Carottage vertical sur la planche |
 | | | 1 | Il n’a pas neigé (ou moins de 5cm) et la couche de 10cm sous la surface est homogène (une seule strate). Carottage horizontal entre la surface de la neige et le niveau -10cm |
 | | | 2 | Il n’a pas neigé (ou moins de 5cm) et la couche de 10cm sous la surface est constitué d’une ou plusieurs strates de nature ou de dureté différente. Pas de mesure de masse volumique |
-| Phénomène Special | `phenspeN` | | Je n'ai pas trouvé d'indicateur dans le guide |
+| Phénomène Spécial | `phenspeN` | | Je n'ai pas trouvé d'indicateur dans le guide |
 | Etendue cche nuageuse 1 | `nnuage1` | | Je n'ai pas trouvé d'indicateur dans le guide |
 
-Personnellement je trouve que ces données "bruts" sont difficillement utilisable par le chalan. Je vais essayer de batir des visus qui permettent de mieux comprendre les indicateurs. Ce sera mon passe temps de cet hiver 😀. Je trouve regrétable que Météo France diffuse des données sans en révéler la nature des données libérées.
+Personnellement je trouve que ces données "bruts" sont difficilement utilisable par le chaland. Je vais essayer de bâtir des visu qui permettent de mieux comprendre les indicateurs. Ce sera mon passe temps de cet hiver 😀. Je trouve regrettable que Météo France diffuse des données sans en révéler la nature des données libérées.
 
 Bon Ski !
+
+**Edit** Suite à un message de [@Dwarf](https://twitter.com/dwarf_power/status/1201396861220864000?s=20). J'ai pu récupérer les codes de *phénomènes spécial* et *Etendue cche nuageuse 1*. Bonne nouvelle donc ! Les code se situait dans la doc sur les données des stations SYNOP, réseaux mondiale de station météo. [Document PDF](https://www.wmo.int/pages/prog/www/WMOCodes/WMO306_vI1/Publications/2017update/WMO306_vI1_2011UP2017_fr.pdf) avec la liste des codes. 
