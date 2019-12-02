@@ -1,4 +1,4 @@
-baseURL = "https://blog.desgrange.info/"
+baseURL = "https://blog.desgran.ge/"
 languageCode = "en-us"
 title = "Remi Desgrange's blog"
 theme="beautifulhugo"
@@ -19,7 +19,7 @@ pygmentsUseClasses = true
     commit = "https://github.com/RemiDesgrange/blog/tree/"
 [Author]
   name = "Rémi Desgrange"
-  email = "remi+blog@desgrange.info"
+  email = "remi+blog@desgran.ge"
   github = "RemiDesgrange"
   twitter = "DesgrangeRemi"
   linkedin = "rdesgrange"
@@ -32,5 +32,15 @@ pygmentsUseClasses = true
 
 [[menu.main]]
     name = "About"
-    url = "about/"
+    url = "/about/"
+    weight = 2
+
+[[menu.main]]
+    name = "Categories"
+    url = "/categories/"
     weight = 3
+
+[[menu.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 4

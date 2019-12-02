@@ -2,6 +2,8 @@
 title: "Decryptage des codes des données poste Nivo"
 date: 2019-11-29T21:08:16+01:00
 draft: false
+tags: ["Neige", "OpenData", "Nivo", "MeteoFrance"]
+categories: ["Neige", "Français", "OpenData", "Meteo"]
 ---
 
 

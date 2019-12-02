@@ -2,6 +2,8 @@
 title: "J'annonce: Nivo"
 date: 2019-07-25T21:38:30+02:00
 draft: true
+tags: ["Neige", "OpenData", "Nivo", "MeteoFrance", "Development", "OpenSource"]
+categories: ["Neige", "Français", "OpenData", "Meteo", "OpenSource"]
 ---
 
 TL; DR: un nouveau site pour consulter les BRA + les balises nivoses + des couches météos diverse et

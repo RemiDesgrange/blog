@@ -2,6 +2,8 @@
 title: "Right Management in Postgresql"
 draft: false
 date: 2017-11-28T10:29:57+01:00
+tags: ["Postgresql", "Database", "Right management"]
+categories: ["Postgresql", "English"]
 ---
 
 Recently I though about (re)starting a blog, but didn't find subject to fill it. Then I got a new job with tons of news subject to learn and I need a place to store it, maybe it will help some. Enjoy.

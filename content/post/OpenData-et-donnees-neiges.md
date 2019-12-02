@@ -2,6 +2,8 @@
 title: "Open data et données neiges"
 date: 2019-11-02T18:34:50+01:00
 draft: false
+tags: ["Neige", "OpenData", "Nivo", "MeteoFrance", "BRA", "Avalanche"]
+categories: ["Neige", "Français", "OpenData", "Meteo"]
 ---
 
 Je joue depuis quelques temps avec les données OpenData neige. J'ai un peu galéré, mais j'ai surtout rencontré des gens formidables qui ont pris le temps de m'expliquer tout ce que ne dit pas Météo France.

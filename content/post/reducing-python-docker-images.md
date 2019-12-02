@@ -2,6 +2,8 @@
 title: "Reducing Python Docker Images Size"
 date: 2019-04-19T14:30:36+02:00
 draft: false
+tags: ["Python", "Docker", "Thoughts"]
+categories: ["Dev", "Python", "Docker"]
 ---
 
 I'm using docker a lot to build  and deploy the software that I (try to) write. I'm also writing a

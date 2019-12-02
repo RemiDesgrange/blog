@@ -2,6 +2,8 @@
 title: "Idea For A Multitenant PostgreSQL"
 date: 2019-06-07T12:43:29+02:00
 draft: false
+tags: ["Postgresql", "Multi-tenant", "Thoughts"]
+categories: ["English", "Postgresql", "Database"]
 ---
 
 I recently migrate a PostgreSQL DB from an ubuntu server VM to Azure PostgreSQL. If you use this

@@ -2,6 +2,8 @@
 title: "Why You Should Use Timestamptz"
 date: 2019-07-10T10:30:46+02:00
 draft: false
+tags: ["Postgresql", "Database", "Time", "Timestamp", "Time management"]
+categories: ["Postgresql", "Database", "English"]
 ---
 
 I see a lot project using `timestamp` data type in there databases. I tend to think that this is a

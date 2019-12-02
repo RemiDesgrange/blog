@@ -2,6 +2,8 @@
 title: "My Python Setup"
 date: 2019-11-18T20:35:21+01:00
 draft: false
+tags: ["Python", "Dev", ]
+categories: ["English", "Python"]
 ---
 
 The Python programming language is, I think, a fantastic tool. But there is two *fucking* thing that really makes me sad: packaging and dependency management.
