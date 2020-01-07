@@ -34,8 +34,17 @@ So I decide to try Leaflet since OL seams too complex and too much needed to be 
 
 ## 3h with leaflet : from "Waouh effect" to "Seriously?!"
 
+So I did a `npm remove --save openlayers` and a `npm install --save leaflet` [^2]. I commented out the map component, and start using geojson and the standard map with some control (layer switcher). 
+
+First I had to fight against nuxt, because leaflet try to do a lot of stuff with `window` even for component where you don't expect (like tooltips). Then you will find yourself writing html in the js because tooltips cannot be a component of it's own. 
+
+It worked pretty fast, but I was stuck with the minimal stuff leaflet is capable of and with the bad design of it. Every stuff I wanted to  do end up with
+
+> hum, could be much easier in openlayers, why do I need to reimplement that ?
+
+[^2]: ok real call was `npm r vuelayers && npm i vue2leaflet`.
 
 ## Back to OL
 
-* much more convient
-* more robust
+Now time to `git reset --head HEAD` ☹.
+
