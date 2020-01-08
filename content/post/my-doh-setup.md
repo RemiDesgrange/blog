@@ -2,6 +2,8 @@
 title: "My Dns-Over-HTTP (DoH) Setup"
 date: 2020-01-07T13:08:52+01:00
 draft: false
+tags: ["Sysadmin", "doh", "dns", "OpenSource"]
+categories: ["Sysadmin", "dns", "doh", "OpenSource"]
 ---
 
 I recently setup a Dns over HTTP server. I use the excellent article from [Stéphane

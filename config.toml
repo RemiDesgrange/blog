@@ -5,12 +5,12 @@ theme="beautifulhugo"
 
 pygmentsCodeFences = true
 pygmentsUseClasses = true
-
+enableGitInfo = true
 
 [params]
     description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
     author= "Rémi Desgrange"
-    #logo = "img/avatar-icon.png" # Expecting square dimensions
+    logo = "https://avatars3.githubusercontent.com/u/13271765"
     rss = true
     readingTime = true
     wordCount = true
