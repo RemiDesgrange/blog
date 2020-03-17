@@ -10,13 +10,13 @@ categories: ["Télétravail", "4G", "Réseaux mobile", "français"]
 commence à faire sacrement la gueule, entre vos gamins qui passe la journée 
 sur Youtube/Netflix/Whatever et vous qui devez pousser cette satanée image 
 docker de 2.8Gio (don't...). Et puis il se peut aussi que votre ADSL soit tellement moisi
-que même une recherhe sur Google est lente (#BeenThereDoneThat).
+que même une recherche sur Google est lente (#BeenThereDoneThat).
 
 ## Mais déjà pourquoi mon ADSL est plus mauvaise que d'hab
 
 A cause de la [paradiaphonie](https://fr.wikipedia.org/wiki/Diaphonie) sur 
 la ligne, vous pouvez remercier vos voisins. Si vous avez la fibre plus de soucis, puisque 
-ce qui cicule dans une fibre optique, c'est de la lumière.
+ce qui circule dans une fibre optique, c'est de la lumière.
 
 ## Première étape : où que c'est qu'elle est mon (mes) antenne(s)
 
@@ -24,13 +24,13 @@ Pour connaitre les antennes près de chez vous, ~~composez le 3637~~ allez sur [
 
 Enlevez toute les antennes non utiles (TV, Radio, Autres stations, 2G, 3G)
 
-![Selection dans cartoradio](/images/selection-cartoradio.png)
+![Séléction dans cartoradio](/images/selection-cartoradio.png)
 
 > *Ceci n'est _absolument_ pas une science exacte, c'est le réseaux mobile qui décide sur
 > qu'elle antenne vous émettez, pas votre terminal !* 
 Mais quand on se trouve à la campagne, on a peu de chance de se tromper 😀. Notez aussi que votre téléphone peut dialoguer avec plusieurs antennes (ce qu'on appelle MIMO, Multiple Input Multiple Output).
 
-Notez aussi que si votre antenne dispose de faiseaux hertziens cela veux dire que
+Notez aussi que si votre antenne dispose de faisceaux hertziens cela veux dire que
 l'adduction (le machin qui amène le débit) est fait non par une fibre mais par un lien
 radio. On arrive aujourd'hui a des liens radios assez performant (notamment chez SFR)
 mais ça saturera plus vite qu'une fibre.
@@ -44,18 +44,18 @@ avez que du 800MHz, brace yourself...
 
 Pour ceux d'entre nous qui habite en montagne ou en zone avec du relief [^1], encore
 faut-t-il avoir la visu sur l'antenne. Vous pouvez vérifier sur carto radio la hauteur du
-mat ou du pylones (différent en fonction de votre opérateur). Notez cette valeur.
+mat ou du pylônes (différent en fonction de votre opérateur). Notez cette valeur.
 
 [^1]: Si vous habitez dans la Beauce, vous pouvez donc passer...
 
 Allez ensuite sur [airlink](link.ui.com). Ce site n'a _rien_ à voir avec la 4G, il va
-juste vous permettre de voir si vous avez une vue direct vers l'antenne. Le cône de
-frenel sera faux (pas les mêmes fréquences) le débit indiqué aussi.
+juste vous permettre de voir si vous avez une vue directe vers l'antenne. Le cône de
+Fresnel sera faux (pas les mêmes fréquences) le débit indiqué aussi.
 
-C'est à ce moment qu'il faudra renseigner la hauteur du pylone que vous avez vu sur
+C'est à ce moment qu'il faudra renseigner la hauteur du pylône que vous avez vu sur
 cartoradio sur un des équipements (peu importe). 
 
-Sachez aussi, que le signal rebondi, donc ce n'est pas parce que vous n'avez pas de vu
+Sachez aussi, que le signal rebondit, donc ce n'est pas parce que vous n'avez pas de vu
 direct que vous n'aurez pas de signal, vous avez bien la 4G en ville sans pour autant
 avoir une vue direct sur les antennes.
 
@@ -69,13 +69,13 @@ pénible pour plusieurs raisons:
 * il est assez complexe de bloquer son téléphone sur une bande de fréquence données
   (bande 700, 800, 1800, 2600MHz)
 
-Vous pouvez utiliser plusieurs produits pour tester, fast.com, speedtest, nperf. Je recommande pas
+Vous pouvez utiliser plusieurs produits pour tester, fast.com, speedtest, nperf. Je recommende pas
 fast.com car c'est un produit netflix, or il se peut qu'en ces temps troublés, les
 interco Netflix soit un brin saturé.
 
-Pour ceux qui ont de vieilles batisses avec de gros mur n'hesitez pas à tester "au bord de
-la fenètre". Dans un logement précédent j'avais ~20Mbps derrière la fenetre, 45Mbps 30cm
-plus loin sur le balcon. C'est pas une solution pérènne, mais pour cette satanée image
+Pour ceux qui ont de vieilles bâtisses avec de gros mur n'hésitez pas à tester "au bord de
+la fenêtre". Dans un logement précédent j'avais ~20Mbps derrière la fenêtre, 45Mbps 30cm
+plus loin sur le balcon. C'est pas une solution pérenne, mais pour cette satanée image
 docker trop lourde, pour quelques minutes ça peut le faire (et ça aérera votre pièce 😉)
 
 ## Quatrième étapes : achetez vous un routeur 4G
@@ -83,10 +83,10 @@ docker trop lourde, pour quelques minutes ça peut le faire (et ça aérera votr
 Si ça fonctionne à peut près chez vous, et que ça vous permet de bosser, vous pouvez
 commencer à vous demander si une box 4G serait pas mal. Il existe des offres des
 opérateurs (Free, Bouygues notamment, je ne suis pas exhaustif) avec des tarifs assez
-élevé. Perso j'ai pris un Huawei B715-23c (le même que free) Il est assez cher mais il
-vous permet de coller une antenne externe (pratique pour les vieilles batisses).
+élevés. Perso j'ai pris un Huawei B715-23c (le même que free) Il est assez cher mais il
+vous permet de coller une antenne externe (pratique pour les vieilles bâtisses).
 L'avantage de l'acheter c'est aussi que vous pouvez switcher de carte sim si un opérateur
-vous fait faut bond (genre SFR en rade, je switch avec la sim de mon téléphone Orange et
+vous fait faux bond (genre SFR en rade, je switch avec la sim de mon téléphone Orange et
 ça remarche). 
 
 En ce qui concerne les antennes externes, j'ai testé pour vous [ceci](https://www.amazon.fr/gp/product/B00UBCCQOA/ref=ppx_yo_dt_b_asin_title_o02_s00?ie=UTF8&psc=1). Spoiler ça
