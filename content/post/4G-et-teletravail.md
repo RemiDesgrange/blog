@@ -7,7 +7,7 @@ categories: ["Télétravail", "4G", "Réseaux mobile", "français"]
 ---
 
 Ça y est, c'est la guerre. Vous êtes confiné chez vous, et votre ADSL 
-commence à faire sacrement la gueule, entre vos gamins qui passe la journée 
+commence à faire sacrement la gueule, entre vos gamins qui passent la journée 
 sur Youtube/Netflix/Whatever et vous qui devez pousser cette satanée image 
 docker de 2.8Gio (don't...). Et puis il se peut aussi que votre ADSL soit tellement moisi
 que même une recherche sur Google est lente (#BeenThereDoneThat).
@@ -78,7 +78,7 @@ la fenêtre". Dans un logement précédent j'avais ~20Mbps derrière la fenêtre
 plus loin sur le balcon. C'est pas une solution pérenne, mais pour cette satanée image
 docker trop lourde, pour quelques minutes ça peut le faire (et ça aérera votre pièce 😉)
 
-## Quatrième étapes : achetez vous un routeur 4G
+## Quatrième étape : achetez vous un routeur 4G
 
 Si ça fonctionne à peut près chez vous, et que ça vous permet de bosser, vous pouvez
 commencer à vous demander si une box 4G serait pas mal. Il existe des offres des
