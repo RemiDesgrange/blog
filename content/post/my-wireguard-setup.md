@@ -40,8 +40,7 @@ umask 077
 wg genkey | tee privatekey | wg pubkey > publickey
 ```
 
-* Fill the the file `/etc/wireguard/wg0.conf`. `wg0` is the name of your interface it can be
-  everything like `wg10` or even `thatsit10`
+* Fill the the file `/etc/wireguard/wg0.conf`. `wg0` is the name of your interface it can be everything like `wg10` or even `chambery`
 
 ```
 [Interface]
@@ -59,14 +58,14 @@ AllowedIPs = 10.10.10.2/32
 `Interface` means that you listen here. And a `Peer` means a distant... Peer at the end of the
 tunnel. You have to declare every peer in your VPN. Which mean that if you deploy wireguard as a VPN
 concentrator for you company you will need some automation here !
+There are some work going on to add dynamic IP to wireguard. Look at the idea [here](https://github.com/WireGuard/wg-dynamic/blob/master/docs/idea.md)
 
 
-The `PostUp/PostDown` are here to NAT the private address to the address where the traffic goes
-(genera lly, the internet). But in case you just want a tunnel to access internal stuff. You don't
-need NAT.
+The `PostUp/PostDown` are here to NAT the private addresses to the address where the traffic goes
+(generally, the internet). But in case you just want a tunnel to access internal stuff. You don't need NAT.
 
 * Start the service : `wg-quick up wg0`.
-* Once it works, enable the service in systemd, this way the interface get up when you start the
+* Once it works, enable the service in `systemd`, this way the interface get up when you start the
   system: `systemctl enable wg-quik@wg0`
 
 ### Client
@@ -93,30 +92,36 @@ DNS=10.10.10.1 # if you have a dns on the server !! if not, server of the machin
 [Peer]
 PublicKey = <Client Public Key>
 AllowedIPs = 0.0.0.0/0 # this specific address means all the traffic.
-Endpoint=1.2.3.4/32 # The ip address of your server.
+Endpoint=1.2.3.4/32 # The ip address of your server. can be an domain.
 ```
 
 You can now launch !: `wg-quick up wg0`
 
-And see status : `wg show`.
+And see status : `wg show`. 
+
+Query (for example) `ifconfig.io` :
+```
+curl https://ifconfig.io
+```
+
+The IP returned should be the one from your distant box endpoint.
 
 ## Corp
 
 At [Camptocamp](https://www.camptocamp.com/) I needed a [split
 tunneling](https://en.wikipedia.org/wiki/Split_tunneling). A VPN where only the traffic for our
-clients goes throught the tunnel, not the whole traffic of my machine, it allow us to have a pretty
+clients goes through the tunnel, not the whole traffic of my machine, it allow us to have a pretty
 small machine and bandwidth compared to what it should if all the traffic of all employees goes
-throught it.
+through it.
 
 
 ### Server
 
-The server config is the same. as above
+The server configuration is the same as above
 
 ### Client
 
-What we want is to route throught some route or ip range. The list of IP addresses I want is on
-github but it does not matter, it could anywhere.
+What we want is to route through some route or ip range. The list of IP addresses I want is on git repo but it does not matter, it could anywhere.
 
 Since `AllowedIPs` cannot be set via shell script in the `wgX.conf`, we will need to use
 `PostUp/PreDown` to:
@@ -172,4 +177,4 @@ PostUp = /path/to/my/wireguard/setup/route.sh up wg0 "<server pub key>"
 
  > Why does it need to set up the route ? If I set `AllowedIPs` to `0.0.0.0/0` it works !
 
- It works because `wg-quick` will read the `AllowedIPs` and create the route accordingly. Here we are setting up route via `wg` which does _only_ takes care of 
+It works because `wg-quick` will read the `AllowedIPs` and create the route accordingly. Here we are setting up route via `wg` which does _only_ takes care of setting up the wireguard interface, not the routing.
