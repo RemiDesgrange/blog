@@ -22,22 +22,22 @@ ce qui circule dans une fibre optique, c'est de la lumière.
 
 Pour connaitre les antennes près de chez vous, ~~composez le 3637~~ allez sur [cartoradio](https://www.cartoradio.fr).
 
-Enlevez toute les antennes non utiles (TV, Radio, Autres stations, 2G, 3G)
+Enlevez toutes les antennes non utiles (TV, Radio, Autres stations, 2G, 3G)
 
 ![Séléction dans cartoradio](/images/selection-cartoradio.png)
 
-> *Ceci n'est _absolument_ pas une science exacte, c'est le réseaux mobile qui décide sur
+> *Ceci n'est _absolument_ pas une science exacte, c'est le réseau mobile qui décide sur
 > qu'elle antenne vous émettez, pas votre terminal !* 
 Mais quand on se trouve à la campagne, on a peu de chance de se tromper 😀. Notez aussi que votre téléphone peut dialoguer avec plusieurs antennes (ce qu'on appelle MIMO, Multiple Input Multiple Output).
 
 Notez aussi que si votre antenne dispose de faisceaux hertziens cela veux dire que
 l'adduction (le machin qui amène le débit) est fait non par une fibre mais par un lien
-radio. On arrive aujourd'hui a des liens radios assez performant (notamment chez SFR)
+radio. On arrive aujourd'hui a des liens radios assez performants (notamment chez SFR)
 mais ça saturera plus vite qu'une fibre.
 
 Notez également que plus la fréquence est basse, moins il y aura de slots pour vous. Vous
-aurez moins de débit à 800MHz qu'à 1600MHz (à charge comparable). Sachez également que
-les terminaux récent agrégent les bandes. En gros si vous êtes à la campagne et que vous
+aurez moins de débit à 800 MHz qu'à 1600 MHz (à charge comparable). Sachez également que
+les terminaux récents agrégents les bandes. En gros si vous êtes à la campagne et que vous
 avez que du 800MHz, brace yourself...
 
 ## Deuxième étape : est-ce que je la vois ?
@@ -62,14 +62,14 @@ avoir une vue direct sur les antennes.
 ## Troisième étape : on passe à la pratique
 
 Là il va falloir vous balader dans la maison. Si vous utilisez un smartphone, ça va être
-pénible pour plusieurs raisons:
+pénible pour plusieurs raisons :
 
 * le téléphone change d'antenne en permanence en fonction des injonctions du réseau ;
 * il change également de bande de fréquences. Même si votre téléphone ne bouge pas (déso...) ;
 * il est assez complexe de bloquer son téléphone sur une bande de fréquence données
-  (bande 700, 800, 1800, 2600MHz)
+  (bande 700, 800, 1800, 2600 MHz)
 
-Vous pouvez utiliser plusieurs produits pour tester, fast.com, speedtest, nperf. Je recommende pas
+Vous pouvez utiliser plusieurs produits pour tester, fast.com, speedtest, nperf. Je ne recommande pas
 fast.com car c'est un produit netflix, or il se peut qu'en ces temps troublés, les
 interco Netflix soit un brin saturé.
 
