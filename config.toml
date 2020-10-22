@@ -1,8 +1,7 @@
 baseURL = "https://blog.desgran.ge/"
-languageCode = "en-us"
+#languageCode = "en-us"
 title = "Remi Desgrange's blog"
 theme="beautifulhugo"
-
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 enableGitInfo = true
@@ -17,6 +16,8 @@ enableGitInfo = true
     showRelatedPosts = true
     subtitle = "Blog about tech, Python, GIS, OpenData, and maybe more."
     commit = "https://github.com/RemiDesgrange/blog/tree/"
+    selfHosted = true
+
 [Author]
   name = "Rémi Desgrange"
   email = "remi+blog@desgran.ge"
