@@ -1,12 +1,14 @@
 baseURL = "https://blog.desgran.ge/"
 #languageCode = "en-us"
 title = "Remi Desgrange's blog"
-theme="beautifulhugo"
+theme="hugo-PaperMod"
 pygmentsCodeFences = true
 pygmentsUseClasses = true
 enableGitInfo = true
+enableRobotsTXT = true
 
 [params]
+    env = "production"
     description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
     author= "Rémi Desgrange"
     logo = "https://avatars3.githubusercontent.com/u/13271765"
