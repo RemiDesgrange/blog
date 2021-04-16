@@ -6,10 +6,10 @@ tags: ["Python", "Docker", "Thoughts"]
 categories: ["Dev", "Python", "Docker"]
 ---
 
-I'm using docker a lot to build  and deploy the software that I (try to) write. I'm also writing a
-lot of python. And one of the things that really annoy me is the size of docker images. Especially
+I'm using docker a lot to build and deploy the software that I (try to) write. I'm also writing a
+lot of Python. And one of the things that really annoy me is the size of docker images. Especially
 python. I often laugh about the size of a hello world in Go. But in Go you can deploy your
-application in docker with no extra cost. So, compiling this hello world  in go :
+application in docker with no extra cost. So, compiling this hello world in go :
 
 ```go
 //test.go
@@ -22,7 +22,7 @@ func main() {
 }
 ```
 
-Leads to a 2MB binary :
+Leads to a 2 MB binary :
 
 ```bash
 ╭─remi@laptop ~/test/go
@@ -53,10 +53,10 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 test-go                       latest              d9663a505be5        8 seconds ago        2MB
 ```
 
-Ok, 2MB, Not bad finally. A Real world app that follow this principle, `traefik`, is 71MB large. [And
+Ok, 2 MB, Not bad finally. A Real world app that follow this principle, `traefik`, is 71 MB large. [And
 it's just the binary. And one layer.](https://github.com/containous/traefik-library-image/blob/master/scratch/amd64/Dockerfile)
 
-So now. I'll build an hello world in python  :
+So now. I'll build a hello world in Python :
 
 ```python
 print("Hello, World!")
@@ -79,10 +79,10 @@ REPOSITORY                    TAG                 IMAGE ID            CREATED   
 test-python                        latest              d85038701a7e        10 seconds ago      929MB
 ```
 
-Yeah 929MB. That's large. And we didn't install anything from `pip`. So, you'll tell me "Yeah, use alpine then!". Sure but when I use python alpine:
+Yeah 929 MB. That's large. And we didn't install anything from `pip`. So, you'll tell me "Yeah, use alpine then!". Sure but when I use python alpine:
 
 * I have a not well supported libc (musl), maintained by one person;
-* We have to build most of package that have binary (like `psycopg2`) and I really don't like
+* We have to build most of the package that have binary (like `psycopg2`) and I really don't like
   building python extension, it's kind of fragile. So I need a python that is build and linked
   against glibc (sorry musl and uclibc).
 
@@ -92,13 +92,13 @@ So I had this idea :
 
 > Python is C right ? But Python is linked dynamically. Can we build python statically ?
 
-The answers is [yes](https://wiki.python.org/moin/BuildStatically). But there are trades off. Large
+The answer is [yes](https://wiki.python.org/moin/BuildStatically). But there are trades off. Large
 trade off, like no crypto. I wanted to build a really small image of python in order to build upon
 it, not to build ultra embeddable stuff.
 
 ## A note about the python image
 
-Have you ever looked at the python image build upon debian/ubuntu. This scary. On the `python:3.7` based on debian stretch, you have `python2.7` embed in the debian image and also `python3.5` because dev dependencies download to build `python3.7` require `python3`, so it download `python3.5` from debian repos. I can continue like this for a long time. But you get the point. This image is unnecessarily heavy. So let's build a small python image.
+Have you ever looked at the python image build upon debian/ubuntu. This scary. On the `python:3.7` based on debian stretch, you have `python2.7` embed in the debian image and also `python3.5` because dev dependencies download to build `python3.7` require `python3`, so it downloads `python3.5` from debian repos. I can continue like this for a long time. But you get the point. This image is unnecessarily heavy. So let's build a small python image.
 
 # First Attempt : using `minideb` image
 
@@ -198,16 +198,15 @@ COPY --from=builder /usr/lib/*.so.* /usr/lib/
 CMD ["/usr/local/bin/python3.7"]
 ```
 
-The beginning of [this
-Dockerfile](https://github.com/docker-library/python/blob/master/3.7/stretch/Dockerfile)
+The beginning of [this Dockerfile](https://github.com/docker-library/python/blob/master/3.7/stretch/Dockerfile)
 
 For the reader that knows how python is build, in the official docker image, `libpython` is linked
-as a dynamic lib (`libpython3.7m.so`) and with my version it's linked statically (`libpython3.7m.a`,the lib, not the
+as a dynamic lib (`libpython3.7m.so`) and with my version it's linked statically (`libpython3.7m.a`, the lib, not the
 python exe!). This was not always the case, it has been changed to be embeddable [issue
 here](https://github.com/docker-library/python/issues/21).
 
-Ok So it work. The image is 218 MB large. But we have to build python. So can we rely on the
-already build binary ? We could also have `libpython.so` which are nice for some usage.
+Ok So it works. The image is 218 MB large. But we have to build python. So can we rely on the
+already built binary ? We could also have `libpython.so` which are nice for some usage.
 
 # Third Attempt : just copy it dude
 
@@ -229,9 +228,9 @@ ENV LD_LIBRARY_PATH /usr/local/lib
 CMD ["/usr/local/bin/python3.7"]
 ```
 
-I added `LD_LIBRARY_PATH` because in busybox, the `.so` file are located in `/lib` and `lddconfig` or `ldconfig` are not available. Not an expert but `ld.so.conf` doesn't seems to be present to, and I thought it was deprecated (but not sure about it).
+I added `LD_LIBRARY_PATH` because in busybox, the `.so` file are located in `/lib` and `lddconfig` or `ldconfig` are not available. Not an expert but `ld.so.conf` doesn't seem to be present to, and I thought it was deprecated (but not sure about it).
 
-We now have a 114MB image. Nice !
+We now have a 114 MB image. Nice !
 
 # Fourth Attempt: Just copying the right lib
 
