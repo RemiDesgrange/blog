@@ -2,8 +2,8 @@ baseURL = "https://blog.desgran.ge/"
 #languageCode = "en-us"
 title = "Remi Desgrange's blog"
 theme="hugo-PaperMod"
-pygmentsCodeFences = true
-pygmentsUseClasses = true
+#pygmentsCodeFences = true
+#pygmentsUseClasses = true
 enableGitInfo = true
 enableRobotsTXT = true
 
@@ -47,3 +47,4 @@ enableRobotsTXT = true
     name = "Tags"
     url = "/tags/"
     weight = 4
+
