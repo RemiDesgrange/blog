@@ -1,6 +1,6 @@
 ---
 title: "Ssh Client Config Tips"
-date: 2021-12-09T20:31:02+01:00
+date: 2021-12-08T20:31:02+01:00
 draft: false
 tags: ["ssh", "sysadmin", "system"]
 category: ["ssh", "sysadmin"]
