@@ -48,16 +48,16 @@ mat ou du pylônes (différent en fonction de votre opérateur). Notez cette val
 
 [^1]: Si vous habitez dans la Beauce, vous pouvez donc passer...
 
-Allez ensuite sur [airlink](link.ui.com). Ce site n'a _rien_ à voir avec la 4G, il va
+Allez ensuite sur [airlink](https://link.ui.com). Ce site n'a _rien_ à voir avec la 4G, il va
 juste vous permettre de voir si vous avez une vue directe vers l'antenne. Le cône de
 Fresnel sera faux (pas les mêmes fréquences) le débit indiqué aussi.
 
 C'est à ce moment qu'il faudra renseigner la hauteur du pylône que vous avez vu sur
-cartoradio sur un des équipements (peu importe). 
+cartoradio sur un des équipements (peu importe).
 
-Sachez aussi, que le signal rebondit, donc ce n'est pas parce que vous n'avez pas de vu
-direct que vous n'aurez pas de signal, vous avez bien la 4G en ville sans pour autant
-avoir une vue direct sur les antennes.
+Sachez aussi, que le signal "rebondit", donc ce n'est pas parce que vous n'avez pas de vue
+directe que vous n'aurez pas de signal, vous avez bien la 4G en ville sans pour autant
+avoir une vue directe sur les antennes.
 
 ## Troisième étape : on passe à la pratique
 
