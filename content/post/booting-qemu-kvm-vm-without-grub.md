@@ -16,7 +16,7 @@ Note that ubuntu first boot is _still_ utterly slow and bloated (snap and cloud-
 
 * First download ubuntu rootfs + initramfs + kernel [here](https://cloud-images.ubuntu.com/focal/current/). 
 For our usage you will need :
-  * `focal-server-cloudimg-amd64-root.tar.xz`: the rootfs that you will unpack into a brand new disks that we will create
+  * `focal-server-cloudimg-amd64-root.tar.xz`: the rootfs you will unpack into a brand new disk that we will create
   * `focal-server-cloudimg-amd64-initrd-generic` from the [`unpacked` folder](https://cloud-images.ubuntu.com/focal/current/unpacked/)
   * `focal-server-cloudimg-amd64-vmlinuz-generic`: a kernel
 
@@ -65,14 +65,14 @@ qemu-system-x86_64 \
 
 
 * `-enable-kvm`: obviously, we want a VM that runs with the CPU virtual instructions.
-* `-kernel` we specify which kernel to use. This means you can use whichever kernel you want (if you decide to compile your own).
+* `-kernel` specify which kernel to use. This means you can use whichever kernel you want (if you decide to compile your own).
 * `-m 4G` 4Gio of memory allocated to this VM.
 * `-boot c` boot to disk (don't try to boot to network or something fancy).
-* `-append`: append the string to the kernel when booted. In our case, we are telling the kernel our disk is a `/dev/vda` and read-write (`rw`). And to output the console to serial 
-S0 (`ttyS0`), qemu will foward ttyS0 to your terminal (stdout).
-* `-device -netdev`: add a network interface to the system, with a shenigan to have the port 22 forwared to the port 5555 on localhost. Which will allow us to connect via ssh easily.
-* `-drive ...`: add a virtio disks to the VM. This is for this reason that you need to pass `/dev/vda` and not `/dev/sda` to the kernel since it knows that the disks is a virtio device.
+* `-append`: append the string to the kernel when booted. In our case, we are telling the kernel our disk is a `/dev/vda` and read-write (`rw`). And to output the console to serial. 
+S0 (`ttyS0`), qemu will foward `ttyS0` to your terminal (stdout).
+* `-device -netdev`: add a network interface to the system, with a shenigan to have the port 22 forwarded to the port 5555 on localhost. Which will allow us to connect via ssh easily.
+* `-drive ...`: add a virtio disks to the VM. This is for this reason that you need to pass `/dev/vda` and not `/dev/sda` to the kernel since it knows that the disk is a virtio device.
 * `-initrd`: nothing to say about the ramfs, but you can have your own too.
 
 
-I have no idea whatsoever if this will come handy one day but I struggle a bit with qemu and ubuntu since the documentation was sparse. The [invocation doc](https://www.qemu.org/docs/master/system/invocation.html) helps a lot though.
+I have no idea whatsoever if this will come handy one day, but I struggled a bit with qemu and ubuntu since the documentation was sparse. The [invocation doc](https://www.qemu.org/docs/master/system/invocation.html) helps a lot though.
