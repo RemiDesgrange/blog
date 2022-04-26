@@ -130,6 +130,7 @@ CREATE TRIGGER trg_layer_styles
     ON layer_styles
     FOR EACH ROW
 EXECUTE FUNCTION f_trigger_insert_update_delete_styles();
+COMMIT;
 ```
 
 
