@@ -84,18 +84,18 @@ BEGIN
         IF NOT FOUND THEN RETURN NULL; END IF;
     ELSIF (TG_OP = 'UPDATE') THEN
         UPDATE _layer_styles
-        SET OLD.f_table_catalog=NEW.f_table_catalog,
-            OLD.f_table_schema=NEW.f_table_schema,
-            OLD.f_table_name=NEW.f_table_name,
-            OLD.f_geometry_column=NEW.f_geometry_column,
-            OLD.stylename=NEW.stylename,
-            OLD.styleqml=NEW.styleqml,
-            OLD.stylesld=NEW.stylesld,
-            OLD.useasdefault=NEW.useasdefault,
-            OLD.description=NEW.description,
-            OLD.ui=NEW.ui,
-            OLD.update_time=NEW.update_time,
-            OLD.type=NEW.type
+        SET f_table_catalog=NEW.f_table_catalog,
+            f_table_schema=NEW.f_table_schema,
+            f_table_name=NEW.f_table_name,
+            f_geometry_column=NEW.f_geometry_column,
+            stylename=NEW.stylename,
+            styleqml=NEW.styleqml,
+            stylesld=NEW.stylesld,
+            useasdefault=NEW.useasdefault,
+            description=NEW.description,
+            ui=NEW.ui,
+            update_time=NEW.update_time,
+            type=NEW.type
         WHERE OLD.id = OLD.id;
         RETURN NEW;
     ELSIF (TG_OP = 'INSERT') THEN
