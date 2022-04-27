@@ -96,7 +96,7 @@ BEGIN
             ui=NEW.ui,
             update_time=NEW.update_time,
             type=NEW.type
-        WHERE OLD.id = OLD.id;
+        WHERE id = OLD.id;
         RETURN NEW;
     ELSIF (TG_OP = 'INSERT') THEN
         INSERT INTO _layer_styles(f_table_catalog,
