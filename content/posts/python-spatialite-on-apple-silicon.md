@@ -1,7 +1,7 @@
 ---
 title: "Python Spatialite on Apple Silicon with Pyenv"
 date: 2023-04-28T18:46:51+02:00
-draft: true
+draft: false
 tags: ["sqlite", "spatialite", "apple", "Apple Silicon", "mac", "python", "pyenv"]
 category: ["Database", "SQL"]
 image: ""
