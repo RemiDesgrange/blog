@@ -66,7 +66,7 @@ with closing(sqlite3.connect(':memory:')) as conn:
             # Insert a POINT geometry
             cursor.execute("INSERT INTO my_table (geom) VALUES (GeomFromText('POINT(1 1)'))")
             # Convert the result set to GeoJSON
-            cursor.execute('SELECT id, AsGeoJSON(geom)::json FROM my_table')
+            cursor.execute('SELECT id, AsGeoJSON(geom) FROM my_table')
             rows = cursor.fetchall()
             print(rows)
 ```
