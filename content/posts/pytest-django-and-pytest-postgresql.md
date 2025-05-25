@@ -1,7 +1,7 @@
 ---
 title: "Setup pytest-django with pytest-postgresql"
 date: 2025-05-22T09:50:20+02:00
-draft: true
+draft: false
 tags: ["Dev", "Pytest", "Django", "Postgresql", "pytest-postgresql", "pytest-django"]
 category: ["Testing"]
 image: ""
@@ -21,23 +21,32 @@ The setup turn out to be not so simple because I wanted:
 
 ⚠️ I tried to setup this with ChatGPT/Claude/Mistal and they **all** failed miserably.
 
-# setup 3 DB
+## Setup 3 DB
 
 ```python
 # conftest.py
 
-def create_postgis_ext(host, port, user, dbname, password):
+def create_postgis_db(host, port, user, dbname, password):
     with (
-        psycopg2.connect(
-            dbname=dbname,
+        psycopg.connect(
             user=user,
             password=password,
             host=host,
             port=port,
         ) as con,
-        con.cursor() as con,
     ):
-        con.execute("CREATE EXTENSION postgis;")
+        con.autocommit = True
+        with con.cursor() as cur:
+            cur.execute("CREATE DATABASE gis;")
+            cur.execute("CREATE DATABASE othergis;")
+    for db in ('gis', 'othergis'):
+        with psycopg.connect(user=user,
+            password=password,
+            dbname=db,
+            host=host,
+            port=port,) as con,
+            con.cursor() as cur:
+                cur.execute("CREATE EXTENSION postgis;")
 
 postgres_options = (
         "-c wal_level=minimal "
@@ -50,23 +59,17 @@ postgres_options = (
         "-c shared_buffers=256MB "  # Increased shared buffers for better caching
         "-c work_mem=64MB"  # Larger work memory for faster operations
     )
-postgresql_proc_default = factories.postgresql_proc(postgres_options=postgres_options, dbname="default")
-postgresql_proc_gis = factories.postgresql_proc(
-        postgres_options=postgres_options, load=[create_postgis_ext], dbname="gis"
-    )
-postgresql_proc_othergis = factories.postgresql_proc(
-    postgres_options=postgres_options, load=[create_postgis_ext], dbname="othergis"
-)
+postgresql_proc_custom = factories.postgresql_proc(postgres_options=postgres_options, load=[create_postgis_dbs], dbname="default")
 ```
 
-This is not ideal since 3 `PostgreSQL` ["cluster"](https://www.postgresql.org/docs/current/creating-cluster.html) will be spawned.
+With this setup, I am creating 3 DBs in a single ["cluster"](https://www.postgresql.org/docs/current/creating-cluster.html) to avoid spawning 3 ones.
 
 You can then override the `django_db_setup` which is way explained in the [doc](https://pytest-django.readthedocs.io/en/latest/database.html#advanced-database-configuration). **BUT** there were several culprit:
 
 * You need to delete the existing connection cache (`del connections.__dict__["settings"]`) in order for the fixture to work properly. Otherwise it'll ignore your settings. Note that I tried to use the `django_db_modify_db_settings` fixture without any luck.
 * `yield request.getfixturevalue("django_db_setup")` is mandatory at the end of the fixture declaration. If not, setup breaks.
 
-```
+```python
 @pytest.fixture(scope="session")
 def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, postgresql_proc_liazogis):
     from django.conf import settings
@@ -74,9 +77,9 @@ def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, pos
     # remove cached_property of connections.settings from the cache
     del connections.__dict__["settings"]
     db_fixture_mapping = {
-        "default": postgresql_proc_default,
-        "gis": postgresql_proc_gis,
-        "othergis": postgresql_proc_othergis,
+        "default": postgresql_proc_custom,
+        "gis": postgresql_proc_custom,
+        "othergis": postgresql_proc_custom,
     }
     for db, fixture in db_fixture_mapping.items():
         settings.DATABASES[db]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
@@ -96,18 +99,18 @@ def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, pos
 ```
 
 
-One this that is then left is the reset of sequence after each tests. Since `Django` is known for being extremely bad at database (it matures, but still...) resetting sequences with the integrated `TransactionTestCase.reset_sequence` was slow. My tests where running 10x slower. So I created a little `autouse` fixture to reset sequence between each tests.
+One this that is then left is the reset of sequence after each tests. Since `Django` is known for being extremely bad at database (it matures, but still...) resetting sequences with the integrated `TransactionTestCase.reset_sequence` was slow. My tests where running 10x slower. So I created a little `autouse` fixture to reset sequence between each tests. Didn't test if calling native postgresql table (`pg_namespace`) was faster or not.
 
 ⚠️ this works **only** because each tests runs in a transaction which gets rollback at the end of each tests. This wouldn't work without transaction.
 
 ```python
 @pytest.fixture(autouse=True)
-def reset_sequences(postgresql_proc_default):
+def reset_sequences(postgresql_proc_custom):
     """Fixture to reset all sequences after each test."""
     yield  # This allows the test to run first
 
     with (
-        psycopg2.connect(
+        psycopg.connect(
             dbname=postgresql_proc_default.dbname,
             user=postgresql_proc_default.user,
             password=postgresql_proc_default.password,
@@ -128,3 +131,5 @@ def reset_sequences(postgresql_proc_default):
             sequence_name = sequence[0]
             cursor.execute(f"ALTER SEQUENCE {sequence_name} RESTART WITH 1;")
 ```
+
+This setup have added an overhead to my pytest sessions by the order of 1 to 2 seconds on mac M1.
