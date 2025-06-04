@@ -16,37 +16,16 @@ When revamping our test infrastructure, I traded reliablity for speed, using `sq
 The setup turn out to be not so simple because I wanted:
 
 * setup of 3 DB.
-* reset of all sequence after each tests. Yes, reling on hardcoded `id`'s in tests are bad, but anyway.
 * fast setup/teardown.
+
+It turns out pytest-postgresql, which will starts a postgresql [cluster](https://www.postgresql.org/docs/current/creating-cluster.html) on your machine, is way faster than using [testcontainer](https://testcontainers.com/).
 
 ⚠️ I tried to setup this with ChatGPT/Claude/Mistal and they **all** failed miserably.
 
-## Setup 3 DB
+## Setup the cluster
 
 ```python
 # conftest.py
-
-def create_postgis_db(host, port, user, dbname, password):
-    with (
-        psycopg.connect(
-            user=user,
-            password=password,
-            host=host,
-            port=port,
-        ) as con,
-    ):
-        con.autocommit = True
-        with con.cursor() as cur:
-            cur.execute("CREATE DATABASE gis;")
-            cur.execute("CREATE DATABASE othergis;")
-    for db in ('gis', 'othergis'):
-        with psycopg.connect(user=user,
-            password=password,
-            dbname=db,
-            host=host,
-            port=port,) as con,
-            con.cursor() as cur:
-                cur.execute("CREATE EXTENSION postgis;")
 
 postgres_options = (
         "-c wal_level=minimal "
@@ -59,19 +38,17 @@ postgres_options = (
         "-c shared_buffers=256MB "  # Increased shared buffers for better caching
         "-c work_mem=64MB"  # Larger work memory for faster operations
     )
-postgresql_proc_custom = factories.postgresql_proc(postgres_options=postgres_options, load=[create_postgis_dbs], dbname="default")
+postgresql_proc_custom = factories.postgresql_proc(postgres_options=postgres_options, dbname="default")
 ```
 
-With this setup, I am creating 3 DBs in a single ["cluster"](https://www.postgresql.org/docs/current/creating-cluster.html) to avoid spawning 3 ones.
-
-You can then override the `django_db_setup` which is way explained in the [doc](https://pytest-django.readthedocs.io/en/latest/database.html#advanced-database-configuration). **BUT** there were several culprit:
+You can then override the `django_db_setup` which is explained in the [doc](https://pytest-django.readthedocs.io/en/latest/database.html#advanced-database-configuration). **BUT** there were several culprit:
 
 * You need to delete the existing connection cache (`del connections.__dict__["settings"]`) in order for the fixture to work properly. Otherwise it'll ignore your settings. Note that I tried to use the `django_db_modify_db_settings` fixture without any luck.
 * `yield request.getfixturevalue("django_db_setup")` is mandatory at the end of the fixture declaration. If not, setup breaks.
 
 ```python
 @pytest.fixture(scope="session")
-def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, postgresql_proc_liazogis):
+def django_db_setup(request, postgresql_proc_custom):
     from django.conf import settings
 
     # remove cached_property of connections.settings from the cache
@@ -83,13 +60,13 @@ def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, pos
     }
     for db, fixture in db_fixture_mapping.items():
         settings.DATABASES[db]["ENGINE"] = "django.contrib.gis.db.backends.postgis"
-        settings.DATABASES[db]["NAME"] = fixture.dbname
+        settings.DATABASES[db]["NAME"] = db
         settings.DATABASES[db]["USER"] = fixture.user
         settings.DATABASES[db]["PASSWORD"] = fixture.password
         settings.DATABASES[db]["HOST"] = fixture.host
         settings.DATABASES[db]["PORT"] = fixture.port
         settings.DATABASES[db]["OPTIONS"] = {"connect_timeout": 10}
-        settings.DATABASES[db]["TEST"]["NAME"] = fixture.dbname
+        settings.DATABASES[db]["TEST"]["NAME"] = db
 
     # re-configure the settings given the changed database config
     connections.settings = connections.configure_settings(settings.DATABASES)
@@ -98,38 +75,80 @@ def django_db_setup(request, postgresql_proc_default, postgresql_proc_gcgis, pos
     yield request.getfixturevalue("django_db_setup")
 ```
 
-
-One this that is then left is the reset of sequence after each tests. Since `Django` is known for being extremely bad at database (it matures, but still...) resetting sequences with the integrated `TransactionTestCase.reset_sequence` was slow. My tests where running 10x slower. So I created a little `autouse` fixture to reset sequence between each tests. Didn't test if calling native postgresql table (`pg_namespace`) was faster or not.
-
-⚠️ this works **only** because each tests runs in a transaction which gets rollback at the end of each tests. This wouldn't work without transaction.
+Note that sequences will not be reset between tests, you'll need the `django_db_reset_sequence` which is painfully slow. One another good reason to use UUID 😅.
+When running with the `transaction=True` argument in `django_db` marker, `TransactionTestCase` will try to truncate all of your tables, but it will **not** `TRUNCATE TABLE <table> CASCADE` unless you specified all of the `available_apps`. So I copy/paste the truncate code from django and hardcoded the `allow_cascade` argument.
 
 ```python
-@pytest.fixture(autouse=True)
-def reset_sequences(postgresql_proc_custom):
-    """Fixture to reset all sequences after each test."""
-    yield  # This allows the test to run first
+@pytest.fixture(scope="session", autouse=True)
+def patch_django_truncate():
+    """Patch Django's truncate to use CASCADE for PostgreSQL."""
 
-    with (
-        psycopg.connect(
-            dbname=postgresql_proc_default.dbname,
-            user=postgresql_proc_default.user,
-            password=postgresql_proc_default.password,
-            host=postgresql_proc_default.host,
-            port=postgresql_proc_default.port,
-        ) as con,
-        con.cursor() as cursor,
-    ):
-        # Get all sequences in the database
-        cursor.execute("""
-            SELECT sequence_name
-            FROM information_schema.sequences
-            WHERE sequence_schema = 'public'
-        """)
-        sequences = cursor.fetchall()
-        # Reset each sequence to 1
-        for sequence in sequences:
-            sequence_name = sequence[0]
-            cursor.execute(f"ALTER SEQUENCE {sequence_name} RESTART WITH 1;")
+    original_flush = TransactionTestCase._fixture_teardown  # type: ignore
+
+    # literal copied from https://github.com/django/django/blob/f5772de69679efb54129ac1cbca3579b512778af/django/test/testcases.py#L1224
+    def patched_fixture_teardown(self):
+        # Allow TRUNCATE ... CASCADE and don't emit the post_migrate signal
+        # when flushing only a subset of the apps
+        for db_name in self._databases_names(include_mirrors=False):
+            # Flush the database
+            inhibit_post_migrate = (
+                self.available_apps is not None
+                or (  # Inhibit the post_migrate signal when using serialized
+                    # rollback to avoid trying to recreate the serialized data.
+                    self.serialized_rollback and hasattr(connections[db_name], "_test_serialized_contents")
+                )
+            )
+            call_command(
+                "flush",
+                verbosity=0,
+                interactive=False,
+                database=db_name,
+                reset_sequences=False,
+                allow_cascade=True,
+                inhibit_post_migrate=inhibit_post_migrate,
+            )
+
+    TransactionTestCase._fixture_teardown = patched_fixture_teardown  # type: ignore
+    yield
+    TransactionTestCase._fixture_teardown = original_flush  # type: ignore
 ```
 
-This setup have added an overhead to my pytest sessions by the order of 1 to 2 seconds on mac M1.
+## Setup db which is not managed
+
+One of our DB is an external gis db, not managed by django. You'll still want to create these models with django for testing purposes.
+The following fixture will execute only if one of the test in the test suite require the `custom_not_managed_db`
+
+```python
+@pytest.fixture(scope="session", autouse=True)
+def create_not_managed_tables(request, django_db_setup, django_db_blocker):
+    # Check if any test in the session uses custom_not_managed_db
+    needs_custom_not_managed_db = False
+
+    # Iterate through all test items in the session
+    for item in request.session.items:
+        # Check the item itself and all its parent nodes (class, module)
+        for node in item.listchain():
+            django_db_marker = node.get_closest_marker("django_db")
+            if django_db_marker:
+                databases = django_db_marker.kwargs.get("databases", None)
+                if databases == "__all__" or (databases and "custom_not_managed_db" in databases):
+                    needs_custom_not_managed_db = True
+                    break
+        if needs_custom_not_managed_db:
+            break
+    # Only create tables if at least one test needs the not_managed_db
+    if needs_custom_not_managed_db:
+        with django_db_blocker.unblock():
+            from django.apps import apps
+            from django.db import connections
+
+            # filter needed
+            not_managed_models = filter(lambda m: m.__name__.startswith("CustomeModels"), apps.get_models())
+            not_managed_db_connection = connections["not_managed_db"]
+            with not_managed_db_connection.schema_editor() as schema_editor:
+                for model in not_managed_models:
+                    model._meta.db_table = model._meta.db_table.rsplit(".", 1)[-1].strip('"')
+                    schema_editor.create_model(model)
+```
+
+This journey was quite interesting since I needed to deep dive into the `pytest-django` code base. This setup have added an overhead to my pytest sessions by the order of 1 to 2 seconds on mac M1.
