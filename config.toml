@@ -1,52 +1,52 @@
 baseURL = "https://blog.desgran.ge/"
 #languageCode = "en-us"
 title = "Remi Desgrange's blog"
-theme="hugo-PaperMod"
+theme = "hugo-PaperMod"
 #pygmentsCodeFences = true
 #pygmentsUseClasses = true
 enableGitInfo = true
 enableRobotsTXT = true
 
 [params]
-    env = "production"
-    description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
-    author= "Rémi Desgrange"
-    logo = "https://avatars3.githubusercontent.com/u/13271765"
-    rss = true
-    showReadingTime = true
-    showCodeCopyButtons = true
-    showPostNavLinks = true
-    showWordCount = true
-    showRelatedPosts = true
-    subtitle = "Blog about tech, Python, GIS, OpenData, and maybe more."
-    commit = "https://github.com/RemiDesgrange/blog/tree/"
-    selfHosted = true
+env = "production"
+description = 'Blog about tech, Python, GIS, OpenData, and maybe more.'
+author = "Rémi Desgrange"
+logo = "https://avatars3.githubusercontent.com/u/13271765"
+rss = true
+showReadingTime = true
+showCodeCopyButtons = true
+showPostNavLinks = true
+showWordCount = true
+showRelatedPosts = true
+subtitle = "Blog about tech, Python, GIS, OpenData, and maybe more."
+commit = "https://github.com/RemiDesgrange/blog/tree/"
+selfHosted = true
+comments = true
 
 [Author]
-  name = "Rémi Desgrange"
-  email = "remi+blog@desgran.ge"
-  github = "RemiDesgrange"
-  twitter = "DesgrangeRemi"
-  linkedin = "rdesgrange"
-  stackoverflow = "users/8204956/rémi-desgrange"
+name = "Rémi Desgrange"
+email = "remi+blog@desgran.ge"
+github = "RemiDesgrange"
+twitter = "DesgrangeRemi"
+linkedin = "rdesgrange"
+stackoverflow = "users/8204956/rémi-desgrange"
 
 [[menu.main]]
-    name = "Blog"
-    url = ""
-    weight = 1
+name = "Blog"
+url = ""
+weight = 1
 
 [[menu.main]]
-    name = "About"
-    url = "/about/"
-    weight = 2
+name = "About"
+url = "/about/"
+weight = 2
 
 [[menu.main]]
-    name = "Categories"
-    url = "/categories/"
-    weight = 3
+name = "Categories"
+url = "/categories/"
+weight = 3
 
 [[menu.main]]
-    name = "Tags"
-    url = "/tags/"
-    weight = 4
-
+name = "Tags"
+url = "/tags/"
+weight = 4
